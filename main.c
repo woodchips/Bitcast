@@ -18,8 +18,8 @@
 #include "sha/sha1.c"
 #include "crypto.c"
 
-#define FILENAME "/home/user/truecrypt-7.0a-setup-x86"
-#define TARGET "172.16.255.1"
+#define FILENAME "/home/user/Videos/test.avi"
+#define TARGET "192.168.10.80"
 #define DATAPORT "5500"
 #define CHUNKSIZE 1024
 
