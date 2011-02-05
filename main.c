@@ -1,4 +1,5 @@
 // main.c - Bitcast 0.1
+// Maintained by woodchips <woodchips@i2pmail.org>
 
 #include <stdio.h>
 #include <stdlib.h>
