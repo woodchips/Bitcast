@@ -29,8 +29,6 @@ int main()
 	FILE *fp;
 	packet p;
 
-	printf("Sending file: %s\n", FILENAME);
-
 	// Open File
 	fp = fopen(FILENAME, "r");
 	// Determine file size
@@ -42,6 +40,12 @@ int main()
 
 	// Process chunks
 	for(i = 0; i < total_chunks; i++) {
+		// Print debug text
+		if(i % 100 == 0) {
+			system("clear");
+			printf("Sending file: %s\n", FILENAME);
+			printf("    Chunk (%d/%d) %d bytes sent\n", i, total_chunks, total);
+		}
 		// Clear packet
 		memset(&p, 0, sizeof p);
 		// Add metadata to packet
