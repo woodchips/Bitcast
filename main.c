@@ -19,7 +19,7 @@
 #include "crypto.c"
 
 #define FILENAME "/home/user/Videos/test.avi"
-#define TARGET "192.168.10.80"
+#define TARGET "127.0.0.1"
 #define DATAPORT "5500"
 #define CHUNKSIZE 1024
 
@@ -44,7 +44,7 @@ int main()
 		if(i % 100 == 0) {
 			system("clear");
 			printf("Sending file: %s\n", FILENAME);
-			printf("    Chunk (%d/%d) %d bytes sent\n", i, total_chunks, total);
+			printf("    Chunk (%d/%d) %d MB sent\n", i, total_chunks, total/(1024*1024));
 		}
 		// Clear packet
 		memset(&p, 0, sizeof p);
@@ -63,7 +63,7 @@ int main()
 		// Send chunk
 		total += sendPacket(p, TARGET, DATAPORT);
 	}
-	printf("  %d bytes transmitted (%d packets)\n", total, total_chunks);
+	printf("  %d MB transmitted (%d packets)\n", total/(1024*1024), total_chunks);
 
 	return 0;
 }
