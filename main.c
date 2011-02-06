@@ -19,7 +19,7 @@
 #include "crypto.c"
 
 #define FILENAME "/home/user/Videos/test.avi"
-#define TARGET "127.0.0.1"
+#define TARGET "172.16.0.4"
 #define DATAPORT "5500"
 #define CHUNKSIZE 1024
 
