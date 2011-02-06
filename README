@@ -1,0 +1,28 @@
+Bitcast - A unidirectional, authenticated, resilient file transfer system
+Maintained by woodchips <woodchips@i2pmail.org>
+-------------------------------------------------------------------------
+
+The era of a free internet is ending.  In the near future, it may be
+far harder to share files and information over the public internet.  The
+community needs to consider alternative methods of distributing
+information.
+
+This project attempts to create a one-way file distribution protocol
+similar in concept to bittorrent.  Its goal is to use inexpensive
+hardware (wifi).  The project's goals include:
+
+  - One-way communication.  No response needed from clients, ever.
+  - Files broken into 1KB chunks and encapsulated in UDP
+  - Each packet will contain a digital signature to verify that the
+    packet was sent by the intended sender.  Receiving stations have
+    the option of verifying this with a public key or blindly trusting
+    packets in the event a public key is not available.
+  - Support for file size up to 4TB
+  - Support for file names up to 255 characters
+
+-------------------------------------------------------------------------
+
+Compiling:
+
+  Server:  "gcc main.c"
+  Client:  Not yet available
