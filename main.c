@@ -25,6 +25,19 @@
 
 int main()
 {
+	char c;
+	printf("Bitcast 0.1\n");
+	printf("woodchips <woodchips@i2pmail.org>\n\n");
+	printf("1) Sender mode\n");
+	printf("2) Receiver mode\n");
+	printf("> ");
+	c = getchar();
+
+	return 0;
+}
+
+void sender()
+{
 	int total=0, i, filesize, total_chunks;
 	FILE *fp;
 	packet p;
@@ -65,5 +78,4 @@ int main()
 	}
 	printf("  %d MB transmitted (%d packets)\n", total/(1024*1024), total_chunks);
 
-	return 0;
 }
