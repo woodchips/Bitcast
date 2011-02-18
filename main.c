@@ -23,6 +23,9 @@
 #define DATAPORT "5500"
 #define CHUNKSIZE 1024
 
+void sender();
+void receiver();
+
 int main()
 {
 	char c;
@@ -32,6 +35,10 @@ int main()
 	printf("2) Receiver mode\n");
 	printf("> ");
 	c = getchar();
+	if(c == '1')
+		sender();
+	else if(c == '2')
+		receiver();
 
 	return 0;
 }
@@ -77,5 +84,10 @@ void sender()
 		total += sendPacket(p, TARGET, DATAPORT);
 	}
 	printf("  %d MB transmitted (%d packets)\n", total/(1024*1024), total_chunks);
+
+}
+
+void receiver()
+{
 
 }
