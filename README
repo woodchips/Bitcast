@@ -24,5 +24,4 @@ hardware (wifi).  The project's goals include:
 
 Compiling:
 
-  Server:  "gcc main.c"
-  Client:  Not yet available
+  "gcc main.c"

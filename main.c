@@ -90,5 +90,5 @@ void sender()
 
 void receiver()
 {
-
+	printf("Not yet implemented\n");
 }
