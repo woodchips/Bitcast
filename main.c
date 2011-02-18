@@ -22,6 +22,7 @@
 #define TARGET "172.16.0.4"
 #define DATAPORT "5500"
 #define CHUNKSIZE 1024
+#define BITRATE 1024000
 
 void sender();
 void receiver();
