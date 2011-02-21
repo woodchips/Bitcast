@@ -19,10 +19,14 @@
 #include "crypto.c"
 
 #define FILENAME "/home/user/Videos/test.avi"
-#define TARGET "172.16.0.4"
+#define TARGET "224.0.2.0"
 #define DATAPORT "5500"
 #define CHUNKSIZE 1024
-#define BITRATE 1024000
+#define BITRATE 1024000	// Not yet used
+#define SENDSLEEP 9400	// 500 = 8mbit, 1150 = 5mbit, 2000 = 3.5mbit
+			// 3000 = 2.5mbit, 9400 = 1mbit
+			// These values are estimates, and a poor method
+			// of bandwidth throttling :)
 
 void sender();
 void receiver();
@@ -83,6 +87,8 @@ void sender()
 		signPacket(p, p.signature);
 		// Send chunk
 		total += sendPacket(p, TARGET, DATAPORT);
+		// Pause to limit throughput
+		usleep(SENDSLEEP);
 	}
 	printf("  %d MB transmitted (%d packets)\n", total/(1024*1024), total_chunks);
 
