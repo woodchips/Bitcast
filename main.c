@@ -96,5 +96,40 @@ void sender()
 
 void receiver()
 {
-	printf("Not yet implemented\n");
+	int sock, status, socklen;
+	char buffer[1600];
+	struct sockaddr_in saddr;
+	struct ip_mreq imreq;
+
+	memset(&saddr, 0, sizeof(struct sockaddr_in));
+	memset(&imreq, 0, sizeof(struct ip_mreq));
+
+	// Open a UDP socket
+	sock = socket(PF_INET, SOCK_DGRAM, IPPROTO_IP);
+	if(sock < 0) {
+		printf("Could not open receive socket");
+		exit(0);
+	}
+	saddr.sin_family = PF_INET;
+	saddr.sin_port = htons(5500);			// Listen on port 5500
+	saddr.sin_addr.s_addr = htonl(INADDR_ANY);	// Bind to any if
+	status = bind(sock, (struct sockaddr *)&saddr, sizeof(struct sockaddr_in));
+
+	imreq.imr_multiaddr.s_addr = inet_addr(TARGET);
+	imreq.imr_interface.s_addr = INADDR_ANY;
+
+	// Join multicast group on default interface
+	status = setsockopt(sock, IPPROTO_IP, IP_ADD_MEMBERSHIP, (const void *)&imreq, sizeof(struct ip_mreq));
+
+	socklen = sizeof(struct sockaddr_in);
+
+	// Receive packet from socket
+	status = recvfrom(sock, buffer, 1600, 0, (struct sockaddr *)&saddr, &socklen);
+	printf("%s", buffer);
+
+	// Shutdown socket
+	shutdown(sock, 2);
+
+	// Close socket
+	close(sock);
 }
