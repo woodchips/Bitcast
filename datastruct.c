@@ -28,3 +28,11 @@ typedef struct {
 	struct filenode *next;
 } filenode;
 
+typedef struct {
+	char filename[256];
+	int total_chunks;
+	short int chunkmap[1000000];
+	struct file *next;
+} file;
+
+
