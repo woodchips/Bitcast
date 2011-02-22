@@ -123,9 +123,12 @@ void receiver()
 
 	socklen = sizeof(struct sockaddr_in);
 
-	// Receive packet from socket
-	status = recvfrom(sock, buffer, 1600, 0, (struct sockaddr *)&saddr, &socklen);
-	printf("%s", buffer);
+	//while(1) {
+		// Receive packet from socket
+		status = recvfrom(sock, buffer, 1600, 0, (struct sockaddr *)&saddr, &socklen);
+		printf("Packet received\n");
+		printpacket(buffer);
+	//}
 
 	// Shutdown socket
 	shutdown(sock, 2);

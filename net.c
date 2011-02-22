@@ -56,3 +56,16 @@ int sendUDP(char *data, int len, char *target, char *dataport)
 
 	return numbytes;
 }
+
+void printpacket(char *received_packet)
+{
+	// Filename starts at &recv_packet+16
+	// Data starts at &recv_packet+83
+	recv_packet *p = (recv_packet *)(&received_packet);
+	printf("Message type:  %d\n", p->message_type);
+	printf("Filename:  %s\n", p->filename);
+	printf("Chunk number:  %d\n", p->chunk_number);
+	printf("Total chunks:  %d\n", p->total_chunks);
+	printf("Data length:  %d\n", p->datalen);
+	printf("\n");
+}
